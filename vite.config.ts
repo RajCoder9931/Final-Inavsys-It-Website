@@ -9,7 +9,7 @@ export default defineConfig({
         target: 'http://20.25.106.163:3000',
         changeOrigin: true,
         secure: false,
-        rewrite: (path) => path.replace(/^\/api/, ''),
+        // rewrite: (path) => path.replace(/^\/api/, ''),
       }
     }
   }
