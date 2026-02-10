@@ -13,7 +13,7 @@ export function AboutPage() {
         <div className="max-w-7xl mx-auto px-6 text-center">
           <AnimatedSection>
             <h1 className="text-5xl md:text-7xl font-bold font-['Orbitron'] mb-8">
-              About <span className="text-[#B4FF39]">IR Tech</span>
+              About <span className="text-[#B4FF39]">Inavsys It Consultancy</span>
             </h1>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
               We are a team of innovators, creators, and problem solvers
@@ -70,14 +70,11 @@ export function AboutPage() {
       </section>
 
       {/* Values Grid */}
-    
- <CoreValues/>
-      <CaregiverWay/>
 
-      <PeopleFirst/>
+      <CoreValues />
+      <CaregiverWay />
 
-      
-
+      <PeopleFirst />
 
     </div>);
 

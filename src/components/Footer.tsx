@@ -22,7 +22,7 @@ export function Footer() {
                 <Zap className="w-5 h-5 text-black" />
               </div>
               <span className="text-xl font-bold font-['Orbitron'] text-white">
-                IR<span className="text-[#B4FF39]">TECH</span>
+              Inavsys It<span className="text-[#B4FF39]"> Consultancy</span>
               </span>
             </Link>
             <p className="text-gray-400 mb-6 leading-relaxed">
@@ -107,12 +107,12 @@ export function Footer() {
               </li>
               <li className="flex items-center space-x-4">
                 <Phone className="w-6 h-6 text-[#B4FF39] shrink-0" />
-                <span className="text-gray-400">+1 (555) 123-4567</span>
+                <span className="text-gray-400">+91 000-000-0000</span>
               </li>
               <li className="flex items-center space-x-4">
                 <Mail className="w-6 h-6 text-[#B4FF39] shrink-0" />
                 <span className="text-gray-400">
-                  contact@irtechinnovation.com
+                  contact@inavsysit.com
                 </span>
               </li>
             </ul>
@@ -121,7 +121,7 @@ export function Footer() {
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500 text-sm mb-4 md:mb-0">
-            © {new Date().getFullYear()} IR Tech Innovation. All rights
+            © {new Date().getFullYear()} Inavsys It Consultancy. All rights
             reserved.
           </p>
           <div className="flex space-x-8 text-sm text-gray-500">
