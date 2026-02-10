@@ -6,7 +6,7 @@ const rmmServices = [
     title: '24/7 Infrastructure Monitoring',
     desc:
       'Our 24/7 Infrastructure Monitoring service continuously tracks the health, availability, and performance of your entire IT environment. Servers, networks, cloud resources, and critical applications are monitored in real time using enterprise-grade RMM tools. This allows us to detect abnormal behavior, system overloads, and potential failures before they impact business operations. By identifying issues early, we reduce downtime, prevent data loss, and maintain consistent system performance. Continuous monitoring ensures your infrastructure remains stable, reliable, and aligned with business demands at all times.',
-    image: 'https://images.unsplash.com/photo-1581092334651-ddf26d9b4c1d'
+    image: 'https://img.freepik.com/free-photo/futuristic-smart-city-with-5g-global-network-technology_53876-98438.jpg'
   },
   {
     title: 'Proactive Alerting & Issue Resolution',
@@ -24,7 +24,7 @@ const rmmServices = [
     title: 'Automated Patch & Update Management',
     desc:
       'Keeping systems up to date is critical for security and stability. Our automated patch and update management service ensures operating systems, applications, and security tools are updated regularly. Updates are tested and deployed during scheduled maintenance windows to minimize disruption. This automation reduces vulnerabilities, improves performance, and ensures compliance with industry security standards while eliminating manual maintenance tasks.',
-    image: 'https://images.unsplash.com/photo-1605902711622-cfb43c44367f'
+    image: 'https://www.techfunnel.com/wp-content/uploads/2023/12/patch-management-challenges.png'
   },
   {
     title: 'Reporting, Insights & Optimization',
@@ -38,7 +38,7 @@ export function RemoteMonitoringPage() {
   return (
     <div className="min-h-screen pt-20">
 
-      {/* ================= HEADER ================= */}
+      {/*  HEADER  */}
       <section className="py-28 bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <AnimatedSection>
@@ -53,7 +53,7 @@ export function RemoteMonitoringPage() {
         </div>
       </section>
 
-      {/* ================= RMM SERVICES ================= */}
+      {/*  RMM SERVICES  */}
       {rmmServices.map((service, index) => {
         const isEven = index % 2 !== 0;
 
