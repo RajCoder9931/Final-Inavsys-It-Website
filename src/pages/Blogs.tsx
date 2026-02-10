@@ -19,7 +19,7 @@ export function BlogsPage() {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const res = await fetch('/api/blogs'); 
+        const res = await fetch('http://20.25.106.163:3000/blogs'); 
         if (!res.ok) throw new Error('Failed to fetch');
   
         const data = await res.json();
