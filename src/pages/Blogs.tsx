@@ -19,8 +19,17 @@ export function BlogsPage() {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const res = await fetch('/api/blogs'); 
-        if (!res.ok) throw new Error('Failed to fetch');
+        const res = await fetch('/api/blogs');
+  
+        // ✅ Treat 304 as valid
+        if (!res.ok && res.status !== 304) {
+          throw new Error('Failed to fetch');
+        }
+  
+        // ✅ If 304, don't try to parse JSON again
+        if (res.status === 304) {
+          return;
+        }
   
         const data = await res.json();
   
@@ -40,6 +49,7 @@ export function BlogsPage() {
   
     fetchBlogs();
   }, []);
+  
   
 
   return (
