@@ -164,7 +164,7 @@ export function HomePage() {
               <div className="w-[400px] h-[500px] glass-card rounded-3xl border border-white/10 flex items-center justify-center relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0a0a0a]/80 z-10" />
                 <img
-                  src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=800"
+                  src="https://thepatternscompany.com/img/webdevelopppp.jpg"
                   alt="Futuristic Tech"
                   className="w-full h-full object-cover opacity-60" />
 
