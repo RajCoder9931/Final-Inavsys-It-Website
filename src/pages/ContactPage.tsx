@@ -106,23 +106,22 @@ export function ContactPage() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
-    setSuccess('');
     setError('');
+    setSuccess('');
 
     try {
-      const res = await fetch('api/contact', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       });
 
-      if (!res.ok) {
-        throw new Error('Failed to submit form');
-      }
+      if (!res.ok) throw new Error('Failed');
 
-      setSuccess('Message sent successfully! We will contact you soon.');
+      setSuccess(
+        'Thanks for submitting! We will contact you as soon as possible.'
+      );
+
       setFormData({
         name: '',
         email: '',
@@ -137,6 +136,7 @@ export function ContactPage() {
       setLoading(false);
     }
   }
+
 
   return (
     <div className="min-h-screen pt-20">

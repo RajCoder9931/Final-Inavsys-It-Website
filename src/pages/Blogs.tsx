@@ -21,12 +21,12 @@ export function BlogsPage() {
       try {
         const res = await fetch('/api/blogs');
   
-        // ✅ Treat 304 as valid
+        
         if (!res.ok && res.status !== 304) {
           throw new Error('Failed to fetch');
         }
   
-        // ✅ If 304, don't try to parse JSON again
+        
         if (res.status === 304) {
           return;
         }
