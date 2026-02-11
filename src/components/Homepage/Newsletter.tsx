@@ -1,9 +1,14 @@
 import { motion } from 'framer-motion';
 import { Button } from '../ui/Button';
 import { LogIn } from 'lucide-react';
+import { useState } from 'react';
+import { NewsletterModal } from './NewsletterModal';
 
 export function Newsletter() {
+  const [openModal, setOpenModal] = useState(false);
+
   return (
+    
     <section className="py-24 sm:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-5 sm:px-6">
 
@@ -53,9 +58,18 @@ export function Newsletter() {
               </li>
             </ul>
 
-            <Button className="bg-[#ff4d4f] hover:bg-[#e64547]">
-              Sign Up    <LogIn className="ml-2"  />
-            </Button>
+            <Button
+  className="bg-[#ff4d4f] hover:bg-[#e64547]"
+  onClick={() => setOpenModal(true)}
+>
+  Sign Up <LogIn className="ml-2" />
+</Button>
+
+<NewsletterModal
+  open={openModal}
+  onClose={() => setOpenModal(false)}
+/>
+
           </motion.div>
 
           {/* Right Image */}

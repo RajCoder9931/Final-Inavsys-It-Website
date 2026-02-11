@@ -1,5 +1,3 @@
-import { Card } from '../components/ui/Card';
-import { Target, Lightbulb, Clock, Shield, Zap } from 'lucide-react';
 import { AnimatedSection } from '../components/AnimatedSection';
 import { MissionVisionBlock } from '../components/AboutPage/MissionVisionBlock';
 import { CaregiverWay } from '../components/AboutPage/CaregiverWay';
@@ -13,7 +11,9 @@ export function AboutPage() {
         <div className="max-w-7xl mx-auto px-6 text-center">
           <AnimatedSection>
             <h1 className="text-5xl md:text-7xl font-bold font-['Orbitron'] mb-8">
-              About <span className="text-[#B4FF39]">Inavsys It Consultancy</span>
+              About <span className="text-[#B4FF39]">Inavsys  Consultancy</span>
+              <span className="block text-lg font-normal text-white mt-4">( A NAVSANT GROUP COMPANY )</span>
+
             </h1>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
               We are a team of innovators, creators, and problem solvers
@@ -51,11 +51,12 @@ export function AboutPage() {
           secondary:
             'We envision a future where technology empowers people and organizations to make smarter decisions, strengthen security, and achieve sustainable growth.'
         }}
+        
       />
 
 
       {/* Slogan */}
-      <section className="py-20 bg-[#B4FF39]/5 border-y border-[#B4FF39]/10">
+      <section className="py-20 bg-[#B4FF39]/8 border-y border-[#B4FF39]/10">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <AnimatedSection>
             <h2 className="text-4xl md:text-6xl font-bold font-['Orbitron'] leading-tight">

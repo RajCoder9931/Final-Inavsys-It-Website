@@ -12,6 +12,7 @@ interface MissionVisionBlockProps {
         primary: string;
         secondary: string;
     };
+    
 }
 
 export function MissionVisionBlock({
@@ -21,6 +22,7 @@ export function MissionVisionBlock({
     image,
     reverse = false,
     content
+    
 }: MissionVisionBlockProps) {
     const Icon = icon === 'mission' ? Target : Lightbulb;
 
