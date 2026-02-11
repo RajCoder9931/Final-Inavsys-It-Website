@@ -103,14 +103,14 @@ export function ContactPage() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
     setSuccess('');
     setError('');
 
     try {
-      const res = await fetch('http://20.25.106.163:3000/contact', {
+      const res = await fetch('api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -136,7 +136,7 @@ export function ContactPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }
 
   return (
     <div className="min-h-screen pt-20">
@@ -221,7 +221,7 @@ export function ContactPage() {
             <AnimatedSection direction="right" delay={0.2}>
               <Card className="p-8 md:p-10">
                 
-                <form className="space-y-6 onSubmit={handleSubmit}">
+                <form className="space-y-6" onSubmit={handleSubmit}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-gray-300">

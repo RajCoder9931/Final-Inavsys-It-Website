@@ -22,7 +22,7 @@ export function NewsletterModal({ open, onClose }: Props) {
     try {
       setLoading(true);
 
-      const res = await fetch('http://20.25.106.163:3000/newsletter', {
+      const res = await fetch('api/newsletter', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email }),
