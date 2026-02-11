@@ -136,8 +136,7 @@ export function ContactPage() {
       setLoading(false);
     }
   }
-
-
+  
   return (
     <div className="min-h-screen pt-20">
 
