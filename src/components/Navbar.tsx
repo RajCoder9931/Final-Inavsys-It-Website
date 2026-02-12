@@ -1,20 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Zap, ChevronDown } from 'lucide-react';
-import { Button } from './ui/Button';
-import { cn } from '../lib/utils';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, X, ChevronDown } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "./ui/Button";
+import { cn } from "../lib/utils";
 import logo from "../../logo.png";
+import parterlogo from "../../adrianaa_logo_blue.png";
+import { useScrollToTop } from "../hooks/useScrollToTop";
+import { trackEvent } from "../lib/analytics";
+
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const location = useLocation();
+  const scrollToTop = useScrollToTop();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
@@ -22,22 +27,20 @@ export function Navbar() {
     setServicesOpen(false);
   }, [location]);
 
-  /*  SERVICES DATA  */
-
   const itServices = [
-    { name: 'IT Consulting & Strategy', path: '/services/it-consulting' },
-    { name: 'Custom Software Development', path: '/services/CSD' },
-    { name: 'Cloud Services & Migration', path: '/services/cloud' },
-    { name: 'Cyber Security', path: '/services/cyber-security' },
-    { name: 'DevOps & Automation', path: '/services/devops' },
+    { name: "IT Consulting & Strategy", path: "/services/it-consulting" },
+    { name: "Custom Software Development", path: "/services/CSD" },
+    { name: "Cloud Services & Migration", path: "/services/cloud" },
+    { name: "Cyber Security", path: "/services/cyber-security" },
+    { name: "DevOps & Automation", path: "/services/devops" },
   ];
 
   const mspServices = [
-    { name: 'Managed IT Services', path: '/services/manage-it' },
-    { name: '24/7 Remote Monitoring (RMM)', path: '/services/rmm' },
-    { name: 'Server & Network Management', path: '/services/server-network' },
-    { name: 'Endpoint / Device Management', path: '/services/endpoint-management' },
-    { name: 'IT Helpdesk Support', path: '/services/help-desk' }
+    { name: "Managed IT Services", path: "/services/manage-it" },
+    { name: "24/7 Remote Monitoring (RMM)", path: "/services/rmm" },
+    { name: "Server & Network Management", path: "/services/server-network" },
+    { name: "Endpoint / Device Management", path: "/services/endpoint-management" },
+    { name: "IT Helpdesk Support", path: "/services/help-desk" },
   ];
 
   return (
@@ -46,34 +49,77 @@ export function Navbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+        "fixed top-0 inset-x-0 z-50 transition-all duration-300",
         scrolled
-          ? 'bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-[#B4FF39]/20 py-4'
-          : 'bg-transparent py-6'
+          ? "bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-[#B4FF39]/20 py-4"
+          : "bg-transparent py-6"
       )}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        {/* Logo */}
-        <Link to="/" className="flex items-center space-x-2">
-          <div className="w-15 h-16 rounded-xl  flex items-center justify-center shadow-md ">
-            <img
-              src={logo}
-              alt="Inavsys Consultancy Logo"
-              className="object-contain w-full h-full"
-            />
-          </div>
-          <span className="text-2xl font-bold font-['Orbitron'] text-white">
-  Inavsys <span className="text-[#B4FF39]">Consultancy</span>
-  <span className="block text-sm font-normal text-white mt-2">( A NAVSANT GROUP COMPANY )</span>
-</span>
+      <div className="max-w-7xl mx-auto px-3 md:px-4 flex items-center justify-between">
 
-        </Link>
+        {/*  BRANDING  */}
+        <div className="flex items-center gap-4 px-4 py-2 rounded-xl  border border-white/10">
+
+          {/* INAVSYS – INTERNAL */}
+          <Link
+            to="/"
+            onClick={() => {
+              scrollToTop();
+              trackEvent({
+                category: "Navbar",
+                action: "Click Logo",
+                label: "Inavsys IT Consultants",
+              });
+            }}
+            className="flex items-center gap-2 opacity-90 hover:opacity-100 transition cursor-pointer"
+          >
+            <img src={logo} alt="Inavsys" className="w-12 h-12 md:w-12 md:h-12 object-contain" />
+            <div className="leading-tight">
+              <div className="text-white text-sm md:text-lg font-['Orbitron'] font-bold">
+                INAVSYS IT <span className="text-[#B4FF39]">CONSULTANTS</span>
+              </div>
+              <div className="hidden md:block text-sm text-white">
+                ( A UNIT OF NAVSANT GROUP )
+              </div>
+            </div>
+          </Link>
+
+          {/* DESKTOP ONLY PARTNER */}
+          <div className="hidden md:flex items-center gap-4">
+            <div className="h-10 w-px bg-white/90" />
+
+            <a
+              href="https://adrianaa.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Visit Adrianaa HR Group"
+              onClick={() =>
+                trackEvent({
+                  category: "Navbar",
+                  action: "Click Partner Logo",
+                  label: "Adriana HR Group",
+                })
+              }
+              className="flex items-center gap-2 opacity-90 hover:opacity-100 transition cursor-pointer"
+            >
+              <div className="p-2 rounded-lg bg-white/90 flex-shrink-0">
+                <img
+                  src={parterlogo}
+                  alt="Adrianaa HR Group"
+                  className="w-20 h-10 object-contain"
+                />
+              </div>
+              <span className="text-xs font-semibold text-gray-200 whitespace-nowrap">
+                Adrianaa HR Group
+              </span>
+            </a>
+          </div>
+        </div>
 
         {/*  DESKTOP MENU  */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center gap-8">
           <Link to="/about" className="nav-link">About</Link>
 
-          {/*  SERVICES DROPDOWN  */}
           <div
             className="relative"
             onMouseEnter={() => setServicesOpen(true)}
@@ -89,43 +135,24 @@ export function Navbar() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 10 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute top-10 left-0 w-[420px] bg-[#0a0a0a] border border-[#B4FF39]/20 rounded-xl shadow-xl p-6 grid grid-cols-2 gap-6"
+                  className="absolute top-10 left-0 w-[420px] bg-[#0a0a0a] border border-[#B4FF39]/20 rounded-xl p-6 grid grid-cols-2 gap-6"
                 >
-                  {/*  IT SERVICES  */}
                   <div>
-                    <p className="text-sm font-semibold text-[#B4FF39] mb-3">
-                      IT Services
-                    </p>
-                    <div className="space-y-2">
-                      {itServices.map((service) => (
-                        <Link
-                          key={service.path}
-                          to={service.path}
-                          className="block text-sm text-gray-300 hover:text-[#B4FF39]"
-                        >
-                          {service.name}
-                        </Link>
-                      ))}
-                    </div>
+                    <p className="text-sm font-semibold text-[#B4FF39] mb-3">IT Services</p>
+                    {itServices.map(s => (
+                      <Link key={s.path} to={s.path} className="block text-sm text-gray-300 hover:text-[#B4FF39]">
+                        {s.name}
+                      </Link>
+                    ))}
                   </div>
 
-                  {/*  MSP SERVICES  */}
                   <div>
-                    <p className="text-sm font-semibold text-[#B4FF39] mb-3">
-                      MSP Services
-                    </p>
-                    <div className="space-y-2">
-                      {mspServices.map((service) => (
-                        <Link
-                          key={service.path}
-                          to={service.path}
-                          className="block text-sm text-gray-300 hover:text-[#B4FF39]"
-                        >
-                          {service.name}
-                        </Link>
-                      ))}
-                    </div>
+                    <p className="text-sm font-semibold text-[#B4FF39] mb-3">MSP Services</p>
+                    {mspServices.map(s => (
+                      <Link key={s.path} to={s.path} className="block text-sm text-gray-300 hover:text-[#B4FF39]">
+                        {s.name}
+                      </Link>
+                    ))}
                   </div>
                 </motion.div>
               )}
@@ -134,47 +161,83 @@ export function Navbar() {
 
           <Link to="/blogs" className="nav-link">Blogs</Link>
           <Link to="/contact" className="nav-link">Contact</Link>
-
           <Button size="sm">Get Started</Button>
         </div>
 
         {/*  MOBILE BUTTON  */}
-        <button
-          className="md:hidden text-white"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
+        <button className="md:hidden text-white" onClick={() => setIsOpen(true)}>
+          <Menu className="w-8 h-8" />
         </button>
       </div>
 
-      {/*  MOBILE MENU  */}
+      {/*  MOBILE DRAWER  */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ x: '100%' }}
+            initial={{ x: "100%" }}
             animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            transition={{ type: 'spring', stiffness: 260, damping: 30 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "spring", stiffness: 260, damping: 30 }}
             className="fixed inset-0 z-40 bg-[#0a0a0a] md:hidden"
           >
-            {/* TOP BAR WITH CLOSE BUTTON */}
-            <div className="fixed top-0 left-0 right-0 h-20 px-6 flex items-center justify-end bg-[#0a0a0a] z-50">
-              <button
-                onClick={() => setIsOpen(false)}
-                className="text-white"
-              >
+            <div className="h-20 px-6 flex items-center justify-end">
+              <button onClick={() => setIsOpen(false)} className="text-white">
                 <X className="w-8 h-8" />
               </button>
             </div>
 
-            {/* CONTENT */}
-            <div className="pt-24 px-6 pb-32 space-y-6 overflow-y-auto">
+            <div className="px-6 pt-6 pb-32 space-y-8 overflow-y-auto">
 
-              {/* ABOUT */}
-              <Link to="/about" className="block text-2xl font-semibold text-white">
-                About
-              </Link>
+              {/* MOBILE BRAND CARD */}
+              <div className="px-4 py-3 rounded-xl bg-white/5 border border-white/10">
+                <Link
+                  to="/"
+                  onClick={() => {
+                    setIsOpen(false);
+                    scrollToTop();
+                    trackEvent({
+                      category: "Mobile Drawer",
+                      action: "Click Logo",
+                      label: "Inavsys IT Consultants",
+                    });
+                  }}
+                  className="flex items-center gap-3"
+                >
+                  <img src={logo} className="w-9 h-9 object-contain" />
+                  <div>
+                    <div className="text-white font-bold text-sm">
+                      INAVSYS IT <span className="text-[#B4FF39]">CONSULTANTS</span>
+                    </div>
+                    <div className="text-xs text-gray-400">A Unit of Navsant Group</div>
+                  </div>
+                </Link>
 
+                <a
+                  href="https://adrianaa.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() =>
+                    trackEvent({
+                      category: "Mobile Drawer",
+                      action: "Click Partner",
+                      label: "Adriana HR Group",
+                    })
+                  }
+                  className="mt-4 flex items-center gap-3"
+                >
+                  <div className="p-2 rounded-lg bg-white/90">
+                    <img
+                      src={parterlogo}
+                      className="w-7 h-7 object-contain"
+                    />
+                  </div>
+                  <span className="text-sm text-gray-300 font-semibold">
+                    Adriana HR Group
+                  </span>
+                </a>
+              </div>
+
+              <Link to="/about" className="block text-2xl font-semibold text-white">About</Link>
               {/* SERVICES */}
               <div>
                 <button
@@ -234,27 +297,16 @@ export function Navbar() {
                 </AnimatePresence>
               </div>
 
-              {/* BLOGS */}
-              <Link to="/blogs" className="block text-2xl font-semibold text-white">
-                Blogs
-              </Link>
-
-              {/* CONTACT */}
-              <Link to="/contact" className="block text-2xl font-semibold text-white">
-                Contact
-              </Link>
+              <Link to="/blogs" className="block text-2xl font-semibold text-white">Blogs</Link>
+              <Link to="/contact" className="block text-2xl font-semibold text-white">Contact</Link>
             </div>
 
-            {/* CTA */}
-            <div className="fixed bottom-0 left-0 right-0 p-6 bg-[#0a0a0a] border-t border-[#B4FF39]/20">
-              <Button className="w-full h-12 text-base">
-                Get Started
-              </Button>
+            <div className="fixed bottom-0 inset-x-0 p-6 border-t border-[#B4FF39]/20 bg-[#0a0a0a]">
+              <Button className="w-full h-12 text-base">Get Started</Button>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-
     </motion.nav>
   );
 }

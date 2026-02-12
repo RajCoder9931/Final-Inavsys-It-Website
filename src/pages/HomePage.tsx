@@ -10,6 +10,7 @@ import { WhyDifferent } from '../components/Homepage/whyDifferennt';
 import { ManagedIT } from '../components/Homepage/ManagedIT';
 import { ITProjects } from '../components/Homepage/ItProject';
 import { Newsletter } from '../components/Homepage/Newsletter';
+import { TopClients } from '../components/Homepage/TopClients';
 export function HomePage() {
   const stats = [
   {
@@ -83,7 +84,7 @@ export function HomePage() {
                 Innovation
               </span>{' '}
               <br />
-              With Inavsys It Consultancy
+              With Inavsys It Consultants 
             </h1>
             <p className="text-xl text-gray-400 mb-8 max-w-lg leading-relaxed">
               We provide cutting-edge tech services with precision and
@@ -200,6 +201,7 @@ export function HomePage() {
           </div>
         </div>
       </section>
+      <TopClients/>
 
       {/* Why Choose Us */}
       <section className="py-32 bg-white/[0.02]">
@@ -207,7 +209,7 @@ export function HomePage() {
           <AnimatedSection direction="right">
             <h2 className="text-4xl md:text-5xl font-bold font-['Orbitron'] mb-8">
               Why Choose <br />
-              <span className="text-[#B4FF39]">Inavsys It Consultancy?</span>
+              <span className="text-[#B4FF39]">Inavsys It Consultants?</span>
             </h2>
             <p className="text-gray-400 mb-8 text-lg leading-relaxed">
               We don't just build software; we engineer digital experiences that
