@@ -102,7 +102,7 @@ export function Navbar() {
               }
               className="flex items-center gap-2 opacity-90 hover:opacity-100 transition cursor-pointer"
             >
-              <div className="p-2 rounded-lg bg-white/90 flex-shrink-0">
+              <div className="p-2 rounded-lg flex-shrink-0">
                 <img
                   src={parterlogo}
                   alt="Adrianaa HR Group"
