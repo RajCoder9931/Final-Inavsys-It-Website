@@ -77,17 +77,52 @@ export function Footer() {
 
             {/* SOCIAL ICONS */}
             <div className="flex space-x-4">
-              {[Twitter, Linkedin, Instagram, Facebook].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center
-                             text-gray-400 hover:bg-[#B4FF39] hover:text-black
-                             transition-all duration-300"
-                >
-                  <Icon className="w-5 h-5" />
-                </a>
-              ))}
+              {/* X (Twitter) */}
+              <a
+                href="https://x.com/inavsys"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center
+               text-gray-400 hover:bg-[#1DA1F2] hover:text-black
+               transition-all duration-300"
+              >
+                <Twitter className="w-5 h-5" />
+              </a>
+
+              {/* LinkedIn */}
+              <a
+                href="https://www.linkedin.com/in/inavsys-it-consultants-0449393aa/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center
+               text-gray-400 hover:bg-[#0A66C2] hover:text-black
+               transition-all duration-300"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+
+              {/* Instagram */}
+              <a
+                href="https://www.instagram.com/inavsys"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center
+               text-gray-400 hover:bg-[#F56040] hover:text-black
+               transition-all duration-300"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
+              {/* Instagram */}
+              <a
+                href="https://www.instagram.com/inavsys"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center
+               text-gray-400 hover:bg-[#1877F2] hover:text-black
+               transition-all duration-300"
+              >
+                <Facebook className="w-5 h-5" />
+              </a>
             </div>
           </div>
 
@@ -97,7 +132,7 @@ export function Footer() {
               Quick Links
             </h3>
             <ul className="space-y-4">
-              {["Home", "About Us", "Services", "Contact"].map((item) => (
+              {["About", "Services", "Contact"].map((item) => (
                 <li key={item}>
                   <Link
                     to={`/${item.toLowerCase().replace(" ", "-")}`}
