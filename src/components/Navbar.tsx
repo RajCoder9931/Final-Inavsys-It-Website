@@ -102,16 +102,26 @@ export function Navbar() {
               }
               className="flex items-center gap-2 opacity-90 hover:opacity-100 transition cursor-pointer"
             >
-              <div className="p-2 rounded-lg flex-shrink-0">
+              <div className="p-2 rounded-lg bg-white/90 flex-shrink-0">
                 <img
                   src={parterlogo}
                   alt="Adrianaa HR Group"
                   className="w-20 h-10 object-contain"
                 />
               </div>
-              <span className="text-xs font-semibold text-gray-200 whitespace-nowrap">
-                Adrianaa HR Group
-              </span>
+              <div className="leading-tight ">
+                <div className="text-sm font-semibold text-white-900">
+                  Adrianaa HR Group
+                </div>
+
+                <div className="text-xs font-semibold uppercase tracking-wide text-amber-600">
+                  Chief Partner
+                </div>
+
+                <div className="text-[10px] text-gray-500 max-w-[220px]">
+                  Maintaining a legacy across the globe since 25+ years
+                </div>
+              </div>
             </a>
           </div>
         </div>
